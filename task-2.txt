@@ -1,4 +1,73 @@
-Öğrenci No:
-AD-SOYAD:
-
+Öğrenci No:250541044
+AD-SOYAD:Eren Bilge Koçak
+Basit kart oyunu stratejisi
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Başla
+
+// 1. Oyunun temel parametreleri
+Oyuncu_El = kartları_al()
+Rakip_El_Tahmini = []
+Oyun_Turu = 1
+Skor_Oyuncu = 0
+Skor_Rakip = 0
+Risk_Toleransı = kullanıcıdan_al("Risk seviyesi (0: güvenli, 1: agresif)")
+Strateji_Modeli = "adaptif"
+
+// 2. Bilgi tabanı başlat
+Geçmiş_Hamleler = []
+Rakip_Model = başlat_model("olasılık-temelli tahmin")
+
+// 3. Oyun döngüsü
+Döngü Oyun_Turu <= maksimum_tur_sayısı:
+
+    // 4. Rakip davranışını analiz et
+    Rakip_Tahminleri = tahmin_et(Rakip_Model, Geçmiş_Hamleler)
+
+    // 5. Oyuncu hamlelerini oluştur
+    Olası_Hamleler = oluştur_hamleler(Oyuncu_El)
+
+    // 6. Her hamle için stratejik değer hesapla
+    En_iyi_hamle = null
+    En_yüksek_değer = -sonsuz
+
+    Döngü hamle içinde Olası_Hamleler:
+        Kazanma_Olasılığı = hesapla_olasılık(hamle, Rakip_Tahminleri)
+        Risk_Düzeyi = analiz_et_risk(hamle)
+        Bilgi_Kazancı = bilgi_kazancı(hamle, Rakip_Tahminleri)
+        Stratejik_Değer = (Kazanma_Olasılığı * (1 - Risk_Toleransı)) + (Bilgi_Kazancı * Risk_Toleransı) - Risk_Düzeyi
+
+        Eğer Stratejik_Değer > En_yüksek_değer ise
+            En_yüksek_değer = Stratejik_Değer
+            En_iyi_hamle = hamle
+
+    // 7. Hamleyi uygula
+    oynat(En_iyi_hamle)
+
+    // 8. Rakip hamlesini gözlemle
+    Rakip_Hamlesi = gözlemle_rakip()
+    Geçmiş_Hamleler += [Rakip_Hamlesi]
+
+    // 9. Tur sonucunu değerlendir
+    Tur_Sonuç = değerlendir_tur(En_iyi_hamle, Rakip_Hamlesi)
+    Eğer Tur_Sonuç == "kazandı" ise
+        Skor_Oyuncu += 1
+    Aksi halde
+        Skor_Rakip += 1
+
+    // 10. Rakip modelini güncelle
+    güncelle_model(Rakip_Model, Rakip_Hamlesi)
+
+    // 11. Strateji adaptasyonu
+    Eğer Skor_Rakip > Skor_Oyuncu ve Oyun_Turu > 3:
+        Strateji_Modeli = "savunmacı"
+        Risk_Toleransı = Risk_Toleransı * 0.8
+
+    Oyun_Turu += 1
+
+// 12. Oyun sonucu
+Eğer Skor_Oyuncu > Skor_Rakip:
+    yazdır("Tebrikler! Oyunu kazandınız.")
+Aksi halde:
+    yazdır("Kaybettiniz. Strateji analizi önerilir.")
+
+Bitir
