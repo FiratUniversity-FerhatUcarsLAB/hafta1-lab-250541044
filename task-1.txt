@@ -1,4 +1,55 @@
-Öğrenci No:
-AD-SOYAD:
-
+Öğrenci No:250541044
+AD-SOYAD:Eren Bilge Koçak
+Mükemmel omlet yapma algoritması
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+BAŞLA
+
+1. MALZEMELER ← {yumurta, tuz, yağ, süt, tavada kullanılacak malzemeler}
+2. EKSİK_VAR_MI ← HAYIR
+
+3. HER malzeme ∈ MALZEMELER için TEKRARLA
+      EĞER malzeme mevcut değilse
+          ÇIKTI malzeme + " eksik!"
+          EKSİK_VAR_MI ← EVET
+      SON
+   SON
+
+4. EĞER EKSİK_VAR_MI = EVET ise
+       ÇIKTI "Omlet yapılamaz. Eksik malzemeleri tamamla."
+       DURDUR
+   SON
+
+5. KASE ← boş
+6. Kır(2-3 yumurta, KASE içine)
+7. EKLE (bir tutam tuz, biraz süt)
+8. ÇIRPMA_SAYISI ← 0
+
+9. WHILE ÇIRPMA_SAYISI < 30 TEKRARLA
+       ÇIRP(KASE içindekiler)
+       ÇIRPMA_SAYISI ← ÇIRPMA_SAYISI + 1
+   SON
+
+10. TAVA ← Isıt
+11. EKLE (biraz yağ, TAVA içine)
+12. EĞER TAVA sıcak değilse
+        BEKLE 1 dakika
+        TEKRARLA 11. adım
+    SON
+
+13. DÖK (KASE içindekiler, TAVA içine)
+
+14. PİŞME_DURUMU ← "çiğ"
+
+15. WHILE PİŞME_DURUMU ≠ "hazır" TEKRARLA
+        BEKLE 1 dakika
+        EĞER alt taraf kızardıysa
+            ÇEVİR omleti
+        SON
+        EĞER üst taraf da piştiyse
+            PİŞME_DURUMU ← "hazır"
+        SON
+   SON
+
+16. ÇIKTI "Omlet hazır! Afiyet olsun :)"
+
+BİTİR
