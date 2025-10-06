@@ -1,4 +1,57 @@
-Öğrenci No:
-AD-SOYAD:
-
+Öğrenci No:250541044
+AD-SOYAD:Eren Bilge Koçak
+Renkleri karıştırarak hedef rengi elde etme
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Başla
+
+// 1. Giriş verilerini al
+Girdi: hedef_renk(R, G, B), mevcut_renkler = [renk1, renk2, ..., renkN]
+Çıkış: karışım_formülü (hangi renklerden ne kadar)
+
+// 2. Renkleri normalize et (0-255 → 0-1 arası)
+Fonksiyon normalize(renk):
+    Dön (renk.R / 255, renk.G / 255, renk.B / 255)
+
+hedef_renk_norm = normalize(hedef_renk)
+mevcut_renkler_norm = []
+Döngü renk içinde mevcut_renkler:
+    mevcut_renkler_norm += [normalize(renk)]
+
+// 3. Karışım uzayını oluştur (böl ve fethet yaklaşımı)
+Fonksiyon karışım_oluştur(renkler, derinlik):
+    Eğer derinlik == 1:
+        Dön renkler
+    Aksi halde:
+        yeni_karışımlar = []
+        Döngü i = 0'dan uzunluk(renkler)-1:
+            Döngü j = i+1'dan uzunluk(renkler):
+                yeni_renk = ortalama(renkler[i], renkler[j])
+                yeni_karışımlar += [yeni_renk]
+        Dön karışım_oluştur(yeni_karışımlar, derinlik - 1)
+
+karışım_kümesi = karışım_oluştur(mevcut_renkler_norm, maksimum_karışım_derinliği)
+
+// 4. En yakın rengi bul (optimizasyon)
+Fonksiyon renk_mesafesi(r1, r2):
+    Dön kare_kök((r1.R - r2.R)^2 + (r1.G - r2.G)^2 + (r1.B - r2.B)^2)
+
+minimum_mesafe = sonsuz
+en_iyi_karışım = null
+
+Döngü karışım içinde karışım_kümesi:
+    mesafe = renk_mesafesi(karışım, hedef_renk_norm)
+    Eğer mesafe < minimum_mesafe:
+        minimum_mesafe = mesafe
+        en_iyi_karışım = karışım
+
+// 5. Edge case kontrolü
+Eğer minimum_mesafe > tolerans_değeri:
+    yazdır("Hedef renge tam ulaşılamıyor, en yakın ton önerildi.")
+Eğer hedef_renk çok nötr (örneğin gri tonları) ise:
+    yazdır("Doygunluğu düşük renkler için özel karışım gerekebilir.")
+
+// 6. Sonuçları göster
+yazdır("Hedef renge en yakın karışım:")
+yazdır(en_iyi_karışım)
+
+Bitir
