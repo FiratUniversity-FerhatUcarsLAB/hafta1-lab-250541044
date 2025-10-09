@@ -4,52 +4,39 @@ Mükemmel omlet yapma algoritması
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
 BAŞLA
 
-1. MALZEMELER ← {yumurta, tuz, yağ, süt, tavada kullanılacak malzemeler}
-2. EKSİK_VAR_MI ← HAYIR
+  // Malzemeleri hazırla
+  MALZEMELER = {yumurta, süt, tuz, karabiber, yağ, isteğe bağlı malzemeler (peynir, mantar, biber, vs.)}
 
-3. HER malzeme ∈ MALZEMELER için TEKRARLA
-      EĞER malzeme mevcut değilse
-          ÇIKTI malzeme + " eksik!"
-          EKSİK_VAR_MI ← EVET
-      SON
-   SON
+  // 1. Yumurtaları kır
+  KASE = boş kase
+  YUMURTA_SAYISI = 2 veya 3
+  TEKRARLA i = 1'dan YUMURTA_SAYISI'na kadar
+      yumurta kır ve KASE içine koy
+  SON
 
-4. EĞER EKSİK_VAR_MI = EVET ise
-       ÇIKTI "Omlet yapılamaz. Eksik malzemeleri tamamla."
-       DURDUR
-   SON
+  // 2. Karışımı hazırla
+  süt ekle (yaklaşık 2 yemek kaşığı)
+  tuz ekle (damak tadına göre)
+  karabiber ekle (damak tadına göre)
+  tüm malzemeleri ÇIRP (homojen olana kadar)
 
-5. KASE ← boş
-6. Kır(2-3 yumurta, KASE içine)
-7. EKLE (bir tutam tuz, biraz süt)
-8. ÇIRPMA_SAYISI ← 0
+  // 3. Tavayı hazırla
+  TAVA = ocak üzerine koy
+  OCAK_AYARI = orta ateş
+  TAVA içine biraz yağ ekle
+  YAĞ_ISINANA_KADAR bekle
 
-9. WHILE ÇIRPMA_SAYISI < 30 TEKRARLA
-       ÇIRP(KASE içindekiler)
-       ÇIRPMA_SAYISI ← ÇIRPMA_SAYISI + 1
-   SON
+  // 4. Karışımı pişir
+  KASE içindeki karışımı TAVA içine dök
+  KENARLAR pişmeye başlayana kadar bekle
+  İSTEĞE_BAGLI_MALZEMELER ekle (peynir, sebze, sucuk, vb.)
+  
+  // 5. Omleti katla
+  ALT_KISIM pişince omleti spatula ile ikiye katla
+  içi tamamen pişene kadar birkaç dakika daha bekle
 
-10. TAVA ← Isıt
-11. EKLE (biraz yağ, TAVA içine)
-12. EĞER TAVA sıcak değilse
-        BEKLE 1 dakika
-        TEKRARLA 11. adım
-    SON
-
-13. DÖK (KASE içindekiler, TAVA içine)
-
-14. PİŞME_DURUMU ← "çiğ"
-
-15. WHILE PİŞME_DURUMU ≠ "hazır" TEKRARLA
-        BEKLE 1 dakika
-        EĞER alt taraf kızardıysa
-            ÇEVİR omleti
-        SON
-        EĞER üst taraf da piştiyse
-            PİŞME_DURUMU ← "hazır"
-        SON
-   SON
-
-16. ÇIKTI "Omlet hazır! Afiyet olsun :)"
+  // 6. Servis et
+  Omleti tabağa al
+  yanında ekmek, yeşillik veya çay ile servis et
 
 BİTİR
