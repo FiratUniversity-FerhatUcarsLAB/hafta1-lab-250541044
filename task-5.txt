@@ -1,4 +1,96 @@
-Öğrenci No:
-AD-SOYAD:
-
+Öğrenci No:250541044
+AD-SOYAD:Eren Bİlge Koçak
+Ödev yapma stratejisi
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Başla
+
+ÖdevListesi ← tüm ödevleri al
+
+Fonksiyon KonuyaHakimiyetBelirle(Ödev):
+    Puan = 0
+    Eğer öğrenci ana fikri hatırlıyorsa Puan += 2
+    Eğer öğrenci basit örnek çözebiliyorsa Puan += 2
+    Eğer öğrenci konuyu anlatabiliyorsa Puan += 2
+    Eğer öğrenci kaynaklara az ihtiyaç duyuyorsa Puan += 2
+    Eğer öğrenci tek başına yapabileceğini söylüyorsa Puan += 2
+
+    Eğer Puan ≥ 8 → Hakimiyet = "Yüksek"
+    Eğer 4 ≤ Puan < 8 → Hakimiyet = "Orta"
+    Eğer Puan < 4 → Hakimiyet = "Düşük"
+
+    Dön Hakimiyet
+
+
+Fonksiyon ZorlukHesapla(Ödev):
+    Zorluk = 0
+    Eğer Ödev.İşYükü = Fazla → Zorluk += 2
+    Eğer Hakimiyet = "Düşük" → Zorluk += 2
+    Eğer Hakimiyet = "Orta" → Zorluk += 1
+    Eğer Ödev.KaynakGerekliliği = Yüksek → Zorluk += 1
+    Eğer Ödev.TeslimFormatı = Proje/Sunum → Zorluk += 1
+    Eğer TeslimTarihi Çok Yakın → Zorluk += 2
+    Dön Zorluk
+
+
+Fonksiyon AciliyetÖnemBelirle(Ödev):
+    Eğer Teslim tarihi ≤ 2 gün → Acil = "Yüksek"
+    Aksi halde → Acil = "Düşük"
+
+    Eğer Ders önemi = Final/Notu Çok Etkileyen → Önem = "Yüksek"
+    Aksi halde → Önem = "Düşük"
+
+    Dön (Aciliyet, Önem)
+
+
+Her ödev için:
+    Hakimiyet ← KonuyaHakimiyetBelirle(Ödev)
+    Ödev.Zorluk ← ZorlukHesapla(Ödev)
+    (Ödev.Aciliyet, Ödev.Önem) ← AciliyetÖnemBelirle(Ödev)
+    Ödev.ZamanTahmini ← İşYüküne göre saat hesapla
+
+
+ÖdevListesi'ni sırala:
+    1. Aciliyet yüksek olan
+    2. Önem yüksek olan
+    3. Zorluk seviyesi yüksek olan
+    4. Teslim tarihi en yakın olan
+
+
+Plan ← boş liste
+
+Her ödev için:
+    Eğer ödev uzun ise:
+        Parçalara ayır
+        Her parçaya süre tahmini yap
+        Günlere dağıt
+    Aksi halde:
+        Tek oturum için planla
+    Plan içine ekle
+
+
+Her gün için:
+    Toplam Çalışma Süresi = 4-6 saat (örnek)
+    Çalışmayı Pomodoro tekniği ile yap:
+        25 dk çalışma, 5 dk mola
+        Her 4 oturumdan sonra 15-20 dk uzun mola
+    Önce Acil + Önemli ödevler
+    Sonra Acil + Önemsiz
+    Daha sonra Önemli + Acil değil
+    En sona Kolay ödevler
+
+    Her ödev veya bölüm tamamlandığında:
+        İşaretle (✓)
+        Küçük ödül ver (ör. 10 dk oyun, atıştırmalık, kısa yürüyüş)
+
+
+Günün sonunda:
+    Yapılanları kontrol et
+    Zaman tahminleri doğru muydu? (Geri bildirim kaydet)
+    Zorlandığın noktaları yaz
+
+
+Tüm ödevler tamamlandığında:
+    "Tebrikler, tüm ödevler tamamlandı!" yaz
+    Büyük ödül ver (ör. film izleme, arkadaşlarla zaman geçirme)
+
+Bitir
