@@ -4,39 +4,47 @@ Mükemmel omlet yapma algoritması
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
 BAŞLA
 
-  // Malzemeleri hazırla
-  MALZEMELER = {yumurta, süt, tuz, karabiber, yağ, isteğe bağlı malzemeler (peynir, mantar, biber, vs.)}
+  // 0. Gerekli mutfak araçlarını al
+  KASE = dolaptan al
+  TAVA = dolaptan al
+  TABAK = dolaptan al
+  ÇATAL veya ÇIRPICI = çekmeceden al
+  SPATULA = çekmeceden al
 
-  // 1. Yumurtaları kır
-  KASE = boş kase
+  // 1. Malzemeleri hazırla
+  MALZEMELER = {yumurta, süt, tuz, karabiber, yağ, isteğe bağlı malzemeler (peynir, sebze, sucuk, vb.)}
+
+  // 2. Yumurtaları kaseye kır
   YUMURTA_SAYISI = 2 veya 3
   TEKRARLA i = 1'dan YUMURTA_SAYISI'na kadar
       yumurta kır ve KASE içine koy
   SON
 
-  // 2. Karışımı hazırla
+  // 3. Karışımı hazırlama
   süt ekle (yaklaşık 2 yemek kaşığı)
   tuz ekle (damak tadına göre)
   karabiber ekle (damak tadına göre)
-  tüm malzemeleri ÇIRP (homojen olana kadar)
+  ÇATAL veya ÇIRPICI ile karışımı çırp
+  (karışım homojen olana kadar)
 
-  // 3. Tavayı hazırla
-  TAVA = ocak üzerine koy
+  // 4. Tavayı hazırla
+  TAVA = ocağın üzerine koy
   OCAK_AYARI = orta ateş
   TAVA içine biraz yağ ekle
   YAĞ_ISINANA_KADAR bekle
 
-  // 4. Karışımı pişir
+  // 5. Omleti pişir
   KASE içindeki karışımı TAVA içine dök
   KENARLAR pişmeye başlayana kadar bekle
   İSTEĞE_BAGLI_MALZEMELER ekle (peynir, sebze, sucuk, vb.)
-  
-  // 5. Omleti katla
-  ALT_KISIM pişince omleti spatula ile ikiye katla
-  içi tamamen pişene kadar birkaç dakika daha bekle
 
-  // 6. Servis et
-  Omleti tabağa al
-  yanında ekmek, yeşillik veya çay ile servis et
+  // 6. Omleti katla
+  ALT_KISIM pişince SPATULA ile omleti ikiye katla
+  içi tamamen pişene kadar birkaç dakika bekle
+
+  // 7. Servis et
+  Omleti TABAK üzerine al
+  yanında ekmek, yeşillik veya çay ile servis yap
 
 BİTİR
+
