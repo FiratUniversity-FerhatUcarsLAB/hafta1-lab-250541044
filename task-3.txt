@@ -1,50 +1,20 @@
 Öğrenci No:250541044
 AD-SOYAD:Eren Bilge Koçak 
-Telefon rehberini alfabetik düzenleme
+ Sınıf notlarını yüksekten düşüğe sıralama
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
 Başla
 
-// 1. Veri yapısını tanımla
-Telefon_Rehberi = [
-    {"isim": "Ahmet Yılmaz", "numara": "0532 123 45 67"},
-    {"isim": "Zeynep Kaya", "numara": "0505 987 65 43"},
-    {"isim": "Mehmet Demir", "numara": "0543 456 78 90"},
-    ...
-]
+Başla
+  Notlar dizisini al (ör: [45, 90, 75, 60, 100])
+  n = dizinin uzunluğu
 
-// 2. Sıralama algoritması seçimi (Bubble Sort örneği)
-Fonksiyon Alfabetik_Sirala(Rehber):
-    N = uzunluk(Rehber)
-    Döngü i = 0'dan N-1'e:
-        Döngü j = 0'dan N-i-1'e:
-            Eğer Rehber[j]["isim"] > Rehber[j+1]["isim"] ise:
-                Geçici = Rehber[j]
-                Rehber[j] = Rehber[j+1]
-                Rehber[j+1] = Geçici
-    Dön Rehber
+  Tekrar et i = 0'dan n-1'e kadar
+    Tekrar et j = 0'dan n-i-2'ye kadar
+      Eğer Notlar[j] < Notlar[j+1] ise
+        Notlar[j] ile Notlar[j+1]'in yerini değiştir
+      Son
+    Son
+  Son
 
-// 3. Rehberi sırala
-Sıralı_Rehber = Alfabetik_Sirala(Telefon_Rehberi)
-
-// 4. Arama stratejisi (Binary Search)
-Fonksiyon Isim_Ara(Rehber, hedef_isim):
-    sol = 0
-    sağ = uzunluk(Rehber) - 1
-
-    Döngü sol <= sağ:
-        orta = (sol + sağ) // 2
-        Eğer Rehber[orta]["isim"] == hedef_isim ise:
-            Dön Rehber[orta]["numara"]
-        Eğer Rehber[orta]["isim"] < hedef_isim ise:
-            sol = orta + 1
-        Aksi halde:
-            sağ = orta - 1
-
-    Dön "Kişi bulunamadı."
-
-// 5. Kullanıcıdan arama isteği al
-hedef_isim = kullanıcıdan_al("Aramak istediğiniz ismi girin:")
-sonuç = Isim_Ara(Sıralı_Rehber, hedef_isim)
-yazdır(sonuç)
-
+  Sıralanmış notları yazdır
 Bitir
